@@ -1,5 +1,6 @@
 # own stuff
-clientapp/node_modules
+clientApp_/node_modules
+.vscode/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
