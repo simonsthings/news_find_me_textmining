@@ -3,3 +3,7 @@
 - `npm install` installs
 - `npm run start` starts dev server on localhost:3000
 - `npm run build` builds your project for production
+
+FIXME:
+
+- fachlichkeit bei der benennung der ui elemente --> keyword nav point
