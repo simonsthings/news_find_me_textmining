@@ -1,4 +1,5 @@
 import copy
+import time
 
 from db_mongo import connect, get_db
 from helper import cleanhtml, translate
@@ -23,5 +24,5 @@ for article in db.noz.find().skip(89).limit(500):
         {'$set': {'_id': article_en['_id']}},
         upsert=True)
     count += 1
-    sleep(0.2)
+    time.sleep(0.2)
     print(count)
