@@ -1,2 +1,4 @@
 # news_find_me_textmining
-Textmining project
+
+- Textmining project
+- client app
