@@ -85,7 +85,7 @@ class PasteForm extends Component {
         </div>
 
         {this.state.showKeyWord && (
-          <div>
+          <div className={classes.container}>
             <KeyWordGroup
               keywordObj={this.state.keyWordData}
               handleDelete={this.handleDelete}

@@ -17,6 +17,7 @@ const styles = theme => ({
 class KeyWordChip extends Component {
   handleDelete = i => {
     console.log("delete chip w/o store?");
+    alert(`delete ${this.props.label}`);
   };
 
   render() {

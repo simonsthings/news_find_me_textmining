@@ -9,13 +9,14 @@ const options = {
     zoomType: "xy,"
   },
   title: {
-    text: "My chart"
+    text: "Meaningful title"
   },
   series: [
-    { title: "example", color: "red", data: [1, 2, 3] },
+    { title: "example", color: "red", data: [1, 2, 3], label: "labelone" },
     {
       title: "copy",
       color: "blue",
+      label: "label2",
       data: [
         [161.2, 51.6],
         [167.5, 59.0],
