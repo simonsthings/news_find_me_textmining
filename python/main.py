@@ -12,7 +12,7 @@ first_article.get('content')
 # tranlate first 500 Articles with google translate it and write it to mongo db
 
 count = 0
-for article in db.noz.find().limit(500):
+for article in db.noz.find().skip(89).limit(500):
     content = article.get('content')
     clean_article = cleanhtml(content)
     translation = translate(clean_article)
@@ -23,4 +23,5 @@ for article in db.noz.find().limit(500):
         {'$set': {'_id': article_en['_id']}},
         upsert=True)
     count += 1
+    sleep(0.2)
     print(count)
