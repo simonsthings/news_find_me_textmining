@@ -4,8 +4,8 @@ import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
+import Plot from "../../components/plot";
 import KeyWordGroup from "../keyWordChipGroup";
-//const KeyWordGroup = lazy(() => import("../keyWordChipGroup"));
 
 const styles = theme => ({
   container: {
@@ -34,7 +34,8 @@ class PasteForm extends Component {
     this.state = {
       text: "",
       showKeyWord: false,
-      keyWordData: ["foo", "bar", "a robot", "meaning", "null"]
+      keyWordData: ["foo", "bar", "a robot", "meaning", "null"],
+      newCoordObject: {}
     };
   }
 
@@ -47,8 +48,37 @@ class PasteForm extends Component {
 
   onButtonClick = () => {
     //prepare your post here which comes
-    console.log("we will post this text now", this.state.text);
+    //console.log("we will post this text now", this.state.text);
     this.setState({ ...this.state, showKeyWord: true });
+
+    if (this.state.text.length >= 5) {
+      this.makePost();
+    } else {
+      alert("der Text is doch ein wenig kurz");
+    }
+  };
+
+  makePost = () => {
+    const url = "http://api.textminer.quving.com";
+    let xhr = new XMLHttpRequest();
+
+    xhr.open("POST", url);
+    //?
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status <= 300) {
+        this.setState({
+          ...this.state,
+          newCoordObject: JSON.parse(xhr.responseText)
+        });
+      } else {
+        console.log("http error");
+      }
+    };
+    let postOBj = {
+      text: this.state.text
+    };
+    xhr.send(JSON.stringify(postOBj));
   };
 
   handleDelete = i => {
@@ -57,7 +87,6 @@ class PasteForm extends Component {
 
   render() {
     const { classes } = this.props;
-    console.log(this.state);
 
     return (
       <>
@@ -92,6 +121,8 @@ class PasteForm extends Component {
             />
           </div>
         )}
+
+        <Plot newCoordObject={this.state.newCoordObject} />
       </>
     );
   }
