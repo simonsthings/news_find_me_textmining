@@ -56,7 +56,7 @@ function Header(props) {
               </Link>
             </Typography>
             <Typography variant="h6" color="inherit" className={classes.grow}>
-              <Link className={classes.link} to="/userland">
+              <Link className={classes.link} to="/keywords">
                 Keywords
               </Link>
             </Typography>

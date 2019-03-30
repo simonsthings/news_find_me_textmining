@@ -13,7 +13,7 @@ const Router = () => {
     <>
       <Suspense fallback={<p>preparing your route...</p>}>
         <Route path="/plot" component={Plot} />
-        <Route path="/userland" component={PasteForm} />
+        <Route path="/keywords" component={PasteForm} />
         <Route path="/" exact component={Start} />
       </Suspense>
     </>
